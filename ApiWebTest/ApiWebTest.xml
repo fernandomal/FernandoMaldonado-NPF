@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiWebTest</name>
+    </assembly>
+    <members>
+        <member name="T:ApiWebTest.Controllers.ValidationController">
+            <summary>
+            Controller of Validation of API
+            </summary>
+        </member>
+        <member name="F:ApiWebTest.Controllers.ValidationController.listValidation">
+            <summary>
+            List with validation of numbers
+            </summary>
+        </member>
+        <member name="F:ApiWebTest.Controllers.ValidationController.Math">
+            <summary>
+            The Multiple builder.
+            </summary>
+        </member>
+        <member name="M:ApiWebTest.Controllers.ValidationController.#ctor(Math.Interface.IMultiple)">
+            <summary>
+            ValidationController Class
+            </summary>
+        </member>
+        <member name="M:ApiWebTest.Controllers.ValidationController.ValidationMultiple11(System.String)">
+            <summary>
+            Method to validation one number is multiple of 11
+            </summary>
+            <param name="jsonInput">Json file with array of numbers to Validate</param>
+            <returns>True if number is multiple of 11</returns>
+        </member>
+        <member name="T:ApiWebTest.Model.NumberDTO">
+            <summary>
+            Model Class Numbers
+            </summary>
+        </member>
+        <member name="P:ApiWebTest.Model.NumberDTO.numbers">
+            <summary>
+            Number to validate.
+            </summary>
+        </member>
+        <member name="T:ApiWebTest.Model.ValidationModel">
+            <summary>
+            Model Class to Validations
+            </summary>
+        </member>
+        <member name="P:ApiWebTest.Model.ValidationModel.Number">
+            <summary>
+            Number to validate.
+            </summary>
+        </member>
+        <member name="P:ApiWebTest.Model.ValidationModel.IsMultiple">
+            <summary>
+            Result of Validation.
+            </summary>
+        </member>
+    </members>
+</doc>

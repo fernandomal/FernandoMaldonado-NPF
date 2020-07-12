@@ -1,0 +1,66 @@
+﻿[
+  {
+    "number": "112233",
+    "isMultiple": true
+  },
+  {
+    "number": "30800",
+    "isMultiple": true
+  },
+  {
+    "number": "2937",
+    "isMultiple": true
+  },
+  {
+    "number": "323455693",
+    "isMultiple": true
+  },
+  {
+    "number": "5038297",
+    "isMultiple": true
+  },
+  {
+    "number": "112234",
+    "isMultiple": false
+  },
+  {
+    "number": "286",
+    "isMultiple": true
+  },
+  {
+    "number": "1331",
+    "isMultiple": true
+  },
+  {
+    "number": "14641",
+    "isMultiple": true
+  },
+  {
+    "number": "24350",
+    "isMultiple": false
+  },
+  {
+    "number": "94186565",
+    "isMultiple": true
+  },
+  {
+    "number": "56568143",
+    "isMultiple": false
+  },
+  {
+    "number": "4611686018427387901307445734561825860123058430092136939501844674407370955160",
+    "isMultiple": true
+  },
+  {
+    "number": "4611686018427387903307445734561825860223058430092136939511844674407370955161",
+    "isMultiple": false
+  },
+  {
+    "number": "4611686018427387901307445734561825860123058430092136939501844674407370955171",
+    "isMultiple": true
+  },
+  {
+    "number": "4611686018427387901307445734561825860123058430092136939501844674407370955170",
+    "isMultiple": false
+  }
+]
