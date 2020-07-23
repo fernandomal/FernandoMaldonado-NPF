@@ -24,7 +24,7 @@ namespace HackerNews
         {
             IList<HackerNewsModel> lstHackerNews = new List<HackerNewsModel>();
 
-            int[] lstTop = GetTopId();
+            int[] lstTop = GetTopIds();
             foreach (int item in lstTop ?? Enumerable.Empty<int>())
             {
                 lstHackerNews.Add(GetDescription(item));
@@ -38,7 +38,7 @@ namespace HackerNews
         /// </summary>
         /// <param name="order">Quantity of stories to sort</param>
         /// <returns>List of Stories</returns>
-        private int[] GetTopId()
+        private int[] GetTopIds()
         {
             var data = Get(PathTop);
 

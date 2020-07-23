@@ -7,7 +7,6 @@
         /// </summary>
         public int Id { get; set; }
 
-
         /// <summary>
         /// True if the item is deleted.
         /// </summary>
