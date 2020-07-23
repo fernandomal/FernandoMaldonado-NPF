@@ -1,23 +1,40 @@
-using Math;
-using Math.Interface;
+using HackerNews;
+using HackerNews.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
 
 namespace ApiWebTest
 {
-
     public class Startup
     {
+        public IConfiguration Configuration { get; private set; }
+
+        public Startup(IConfiguration configuration)
+        {
+            this.Configuration = configuration;
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            services.AddSingleton<IMultiple, Multiple>();
+            services.AddSingleton<IHackerNewsClient, HackerNewsClient>();
+
+            string url = Configuration.GetValue<string>("APISettings:URL");
+
+            string pathTop = Configuration.GetValue<string>("APISettings:PathTop");
+
+            string pathDetails = Configuration.GetValue<string>("APISettings:PathDetails");
+
+            int order =  Configuration.GetValue<int>("APISettings:Order");
+
+            services.AddSingleton<IHackerNewsClient>(new HackerNewsClient(url, pathTop, pathDetails, order));
 
             // Swagger Config Configuration
             services.AddSwaggerGen(c =>
@@ -25,7 +42,7 @@ namespace ApiWebTest
                 c.SwaggerDoc("v1",
                     new Microsoft.OpenApi.Models.OpenApiInfo
                     {
-                        Title = "Validador Math",
+                        Title = "Senior Backend Developer Coding Test",
                         Version = "v1",
                         Description = "Exemplo de API REST criada com o ASP.NET Core",
                         Contact = new Microsoft.OpenApi.Models.OpenApiContact

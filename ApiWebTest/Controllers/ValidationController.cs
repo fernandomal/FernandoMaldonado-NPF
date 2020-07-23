@@ -1,7 +1,8 @@
-﻿using ApiWebTest.Model;
-using Common;
-using Math.Interface;
+﻿using ApiWebTest.RequestRateLimit;
+using HackerNews.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Model;
 using System;
 using System.Collections.Generic;
 
@@ -14,45 +15,31 @@ namespace ApiWebTest.Controllers
     [ApiController]
     public class ValidationController : ControllerBase
     {
-        /// <summary>
-        /// List with validation of numbers
-        /// </summary>
-        private List<ValidationModel> listValidation = new List<ValidationModel>();
-
-        /// <summary>
-        /// The Multiple builder.
-        /// </summary>
-        private readonly IMultiple Math;
+        private IHackerNewsClient Client;
 
         /// <summary>
         /// ValidationController Class
         /// </summary>
-        public ValidationController(IMultiple math)
+        public ValidationController(IHackerNewsClient client)
         {
-            Math = math;
+            Client = client;
         }
 
         /// <summary>
-        /// Method to validation one number is multiple of 11
+        /// The API should return an array of the first 20 "best stories" as returned by the Hacker News API, sorted by their score in a descending order
         /// </summary>
-        /// <param name="jsonInput">Json file with array of numbers to Validate</param>
-        /// <returns>True if number is multiple of 11</returns>
+        /// <returns>List with first 20 "best stories"</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(List<ValidationModel>), 200)]
+        [RequestRateLimit(Name = "Limit Request Number", Seconds = 10)]
+        [ProducesResponseType(typeof(List<HackerNewsModel>), 200)]
         [ProducesResponseType(400)]
-        public IActionResult ValidationMultiple11(string jsonInput)
+        public IActionResult ListTopStorys()
         {
             try
             {
-                NumberDTO numberDTO = Newtonsoft.Json.JsonConvert.DeserializeObject<NumberDTO>(jsonInput);
+                IList<HackerNewsModel> lstStoryes = Client.GetTopHackerNews();
 
-                foreach (var number in numberDTO.numbers)
-                {
-                    ValidationModel ValidationModel = new ValidationModel(number, Math.ValidationMultiple11(number));
-                    listValidation.Add(ValidationModel);
-                }
-
-                return Ok(listValidation);
+                return Ok(lstStoryes);
             }
             catch (Exception ex)
             {

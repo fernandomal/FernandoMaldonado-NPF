@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApiWebTest</name>
+    </assembly>
+    <members>
+        <member name="T:ApiWebTest.Controllers.ValidationController">
+            <summary>
+            Controller of Validation of API
+            </summary>
+        </member>
+        <member name="M:ApiWebTest.Controllers.ValidationController.#ctor(HackerNews.Interface.IHackerNewsClient)">
+            <summary>
+            ValidationController Class
+            </summary>
+        </member>
+        <member name="M:ApiWebTest.Controllers.ValidationController.ListTopStorys">
+            <summary>
+            The API should return an array of the first 20 "best stories" as returned by the Hacker News API, sorted by their score in a descending order
+            </summary>
+            <returns>List with first 20 "best stories"</returns>
+        </member>
+    </members>
+</doc>
